@@ -12,7 +12,26 @@ var count = 0;
 var percentWidth = 0;
 var heartLeft = -3.2;
 var progressLoad = setInterval(progressInterva,100)
-
+function createRose() {
+    const rose = document.createElement("div");
+    rose.classList.add("rose");
+    document.body.appendChild(rose);
+  
+    // Đặt vị trí ngang ngẫu nhiên cho bông hồng
+    rose.style.left = Math.random() * 100 + "vw";
+  
+    // Tạo thời gian rơi ngẫu nhiên cho từng bông hồng
+    rose.style.animationDuration = Math.random() * 3 + 2 + "s";
+  
+    // Xóa bông hồng sau khi nó rơi xuống dưới màn hình
+    setTimeout(() => {
+      rose.remove();
+    }, 5000);
+  }
+  
+  // Tạo bông hồng mới mỗi 700ms
+  setInterval(createRose, 700);
+  
 button.addEventListener("click", function(){
     button.style.transform = "scale(0.8)";
     setTimeout(()=>{

@@ -28,10 +28,10 @@
         <div class="boxSlider">
           <div class="listSlider">
             <div class="slider">
-              <img src="../image/love1.jfif" alt="" />
+              <img src="../image/hinh.png" alt="" />
             </div>
             <div class="slider">
-              <img src="../image/love2.png" alt="" />
+              <img src="../image/hinh1.png" alt="" />
             </div>
           </div>
           <div class="left">
@@ -133,58 +133,53 @@
     src="https://code.jquery.com/jquery-3.6.3.min.js"
   ></script>
   <script>
-    $(window).on("load", function (event) {
-      $("body").removeClass("preloading");
-      $(".loadingLove").delay(1000).fadeOut("fast");
+     $(window).on("load", function () {
+        $("body").removeClass("preloading");
+        $(".loadingLove").delay(1000).fadeOut("fast");
 
-      function getHeart(e) {
-        let ele = document.createElement("div");
-        ele.className = "element";
-        document.querySelector("body").prepend(ele);
-        ele.style.left = e.clientX + "px";
-        ele.style.top = e.clientY - 10 + "px";
-        setTimeout(() => {
-          let text = document.querySelectorAll(".element")[0],
-            directionX = Math.random() < 0.5 ? -1 : 1,
-            directionY = Math.random() < 0.5 ? -1 : 1;
+        function createFallingRose() {
+      const rose = document.createElement("div");
+      rose.className = "falling-rose";
+      rose.innerHTML = "🌹"; // Bông hồng
+      rose.style.left = Math.random() * 100 + "vw"; // Vị trí ngẫu nhiên
+      rose.style.animationDuration = Math.random() * 3 + 5 + "s"; // Thời gian rơi ngẫu nhiên
+      document.body.appendChild(rose);
 
-          text.style.left =
-            parseInt(text.style.left) -
-            directionX * (Math.random() * 100) +
-            "px";
-          text.style.top =
-            parseInt(text.style.top) -
-            directionY * (Math.random() * 100) +
-            "px";
-          text.style.opacity = 0;
-          text.style.transform = "scale(0.4)";
-          text.innerHTML = "💗";
-          text.style.zIndex = "100";
+      // Xóa bông hồng sau khi rơi
+      setTimeout(() => {
+        rose.remove();
+      }, 8000);
+    }
 
+    // Gọi hàm tạo bông hồng liên tục
+    setInterval(createFallingRose, 500); // Cứ 0.5 giây tạo 1 bông
+
+        function getHeart(e) {
+          let ele = document.createElement("div");
+          ele.className = "element";
+          document.body.prepend(ele);
+          ele.style.left = e.clientX + "px";
+          ele.style.top = e.clientY - 10 + "px";
+          ele.innerHTML = "💗";
           setTimeout(() => {
             ele.remove();
           }, 1000);
-        }, 10);
-      }
-      document.onmousemove = function (e) {
-        getHeart(e);
-      };
-      document.onclick = function (e) {
-        let ele = document.createElement("div");
-        ele.className = "heartRain";
-        document.querySelector("body").prepend(ele);
-        ele.style.left = e.clientX - 10 + "px";
-        ele.style.top = e.clientY - 10 + "px";
-        ele.innerHTML = "💗";
-        setTimeout(() => {
-          ele.style.top = "calc(85% - 25px)";
-        }, 100);
-        setTimeout(() => {
-          ele.style.opacity = 0;
-        }, 3000);
-        setTimeout(() => {
-          ele.remove();
-        }, 4000);
+        }
+
+        document.onmousemove = function (e) {
+          getHeart(e);
+        };
+
+        document.onclick = function (e) {
+          let ele = document.createElement("div");
+          ele.className = "heartRain";
+          document.body.prepend(ele);
+          ele.style.left = e.clientX - 10 + "px";
+          ele.style.top = e.clientY - 10 + "px";
+          ele.innerHTML = "💗";
+          setTimeout(() => {
+            ele.remove();
+          }, 4000);
       };
       document.onmousedown = (e) => {
         getHeart(e);
@@ -267,7 +262,6 @@
     // thay đổi lời chúc
     const textLetterP =
       "Hôm nay ngày 20/10 , em xin chúc các bé/chị 1 ngày 20/10 thật hạnh phúc , luôn xinh đẹp và những người chưa có người iu sẽ sóm có người iu :))) Mong rằng ngày hôm nay sẽ mang lại cho các bé/chị nhiều niềm vui và những điều bất ngờ thú vị.HAPPY WOMAN DAY";
-    const textLetterG = "Người tặng: Liên hệ phòng 401 ";
     let timoutTextLetterContent;
     let letterContent = ""; // Để lưu nội dung trước khi hiển thị
     function textCharLetterContent() {
@@ -276,8 +270,8 @@
         indexTextContent++;
         setTimeout(indexTextContent, 100);
       } else {
-        letterContent += `\n\n${textLetterG}`; // Thêm dòng người tặng với khoảng cách
-        textLetterContent.textContent = letterContent; // Cập nhật nội dung hiển thị
+        // letterContent += `\n\n${textLetterG}`; // Thêm dòng người tặng với khoảng cách
+        // textLetterContent.textContent = letterContent; // Cập nhật nội dung hiển thị
         clearTimeout(timoutTextLetterContent); // Dọn dẹp timeout
       }
     }

@@ -166,6 +166,7 @@ body{
     position: relative;
     margin-top: 70px;
     width: 100%;
+    height: 200px;
     display: flex;
     justify-content: center;
     opacity: 0;
@@ -216,7 +217,7 @@ body{
 .listSlider{
     position: relative;
     width: 200px;
-    height: 100px;
+    height: 200px;
     display: flex;
     overflow: hidden;
     border-radius: 10px;
@@ -764,6 +765,39 @@ body{
 .mewmew1 img, .mewmew2 img{
     width: 100%;
 }
-
-
+/* CSS cho hiệu ứng bông hồng rơi */
+.rose {
+    position: fixed;
+    top: -50px;
+    width: 30px;
+    height: 30px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/2655/2655742.png'); /* URL hình bông hồng */
+    background-size: cover;
+    animation: fall linear infinite;
+    z-index: 999;
+    pointer-events: none;
+  }
+  
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  .falling-rose {
+    position: absolute;
+    top: -10%; /* Bắt đầu từ phía trên màn hình */
+    font-size: 30px;
+    pointer-events: none; /* Không cho tương tác */
+    animation: fall linear infinite; /* Hiệu ứng rơi */
+    z-index: 9999;
+  }
+  
+  /* Keyframes cho hiệu ứng rơi */
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(360deg); /* Di chuyển xuống dưới + xoay */
+    }
+  }
 
