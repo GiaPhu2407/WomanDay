@@ -137,22 +137,27 @@
         $("body").removeClass("preloading");
         $(".loadingLove").delay(1000).fadeOut("fast");
 
-        function createFallingRose() {
-      const rose = document.createElement("div");
-      rose.className = "falling-rose";
-      rose.innerHTML = "🌹"; // Bông hồng
-      rose.style.left = Math.random() * 100 + "vw"; // Vị trí ngẫu nhiên
-      rose.style.animationDuration = Math.random() * 3 + 5 + "s"; // Thời gian rơi ngẫu nhiên
-      document.body.appendChild(rose);
+        function createFallingBouquet() {
+  const bouquet = document.createElement("div");
+  bouquet.className = "falling-bouquet";
+  
+  // Nội dung của bó hoa với tiền
+  bouquet.innerHTML = `💐`;
 
-      // Xóa bông hồng sau khi rơi
-      setTimeout(() => {
-        rose.remove();
-      }, 8000);
-    }
+  // Vị trí và thời gian rơi ngẫu nhiên
+  bouquet.style.left = Math.random() * 100 + "vw";
+  bouquet.style.animationDuration = Math.random() * 3 + 5 + "s";
 
-    // Gọi hàm tạo bông hồng liên tục
-    setInterval(createFallingRose, 500); // Cứ 0.5 giây tạo 1 bông
+  document.body.appendChild(bouquet);
+
+  // Xóa bó hoa sau khi rơi
+  setTimeout(() => {
+    bouquet.remove();
+  }, 8000);
+}
+
+// Gọi hàm tạo bó hoa liên tục
+setInterval(createFallingBouquet, 500); // Tạo bó hoa mỗi 0.5 giây
 
         function getHeart(e) {
           let ele = document.createElement("div");
@@ -186,7 +191,7 @@
       };
 
       const inputField = document.getElementById("inputField");
-      const textToType = "Gửi mấy bé/chị nhân dịp ngày 20/10"; // thay đổi tên người yêu của bạn
+      const textToType = "Gửi dì iu,chị bé và kim "; // thay đổi tên người yêu của bạn
       const typingSpeed = 100; // milliseconds per character
 
       let charIndex = 0;
@@ -232,7 +237,7 @@
     // .textLetter text h2
     let indexText = 0;
     let textLetter = document.querySelector(".textLetter h2");
-    const textLetterH2 = "Gửi các bé/chị Phòng trọ 503!";
+    const textLetterH2 = "Gửi dì iu ,chị bé và kim quà 20/10!";
     let timoutTextLetter;
 
     function textCharLetter() {
@@ -261,7 +266,7 @@
     let textLetterContent = document.querySelector(".contentLetter");
     // thay đổi lời chúc
     const textLetterP =
-      "Hôm nay ngày 20/10 , em xin chúc các bé/chị 1 ngày 20/10 thật hạnh phúc , luôn xinh đẹp và những người chưa có người iu sẽ sóm có người iu :))) Mong rằng ngày hôm nay sẽ mang lại cho các bé/chị nhiều niềm vui và những điều bất ngờ thú vị.HAPPY WOMAN DAY";
+      "Hôm nay ngày 20/10 , con xin chúc dì ,chị bé và kim ngày 20/10 thật hạnh phúc , luôn xinh đẹp và thật nhiều sức khoẻ.HAPPY WOMAN DAY";
     let timoutTextLetterContent;
     let letterContent = ""; // Để lưu nội dung trước khi hiển thị
     function textCharLetterContent() {
